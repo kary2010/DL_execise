@@ -25,7 +25,7 @@ theta_t(1) = 0;
 
 J = 1 / (2 * m) * sum((X * theta - y) .^ 2) + lambda / (2 * m) * sum(theta_t .^ 2);
 
-grad = (1 / m * ((X * theta) - y)' * X)' + lambda / m * theta_t;
+grad = 1 / m * (((X * theta) - y)' * X)' + lambda / m * theta_t;
 
 
 

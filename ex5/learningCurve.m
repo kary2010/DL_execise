@@ -52,14 +52,15 @@ error_val   = zeros(m, 1);
 %
 
 % ---------------------- Sample Solution ----------------------
-train_lambda = 0.01;
+train_lambda = lambda;
 for i = 1:m
     [theta] = trainLinearReg(X(1:i, :), y(1:i), train_lambda);
-    [J, grad] = linearRegCostFunction(X(1:i, :), y(1:i), theta, lambda);
-%    printf("i = %d, train_err = %d, grad[%d, %d]\n", i, J, grad(1), grad(2));
+    [J, grad] = linearRegCostFunction(X(1:i, :), y(1:i), theta, 0);
+#   printf("i = %d, train_err = %d, grad[%d, %d]\n", i, J, grad(1), grad(2));
     error_train(i) = J;
-    [J, grad] = linearRegCostFunction(Xval, yval, theta, lambda);
+    [J, grad] = linearRegCostFunction(Xval, yval, theta, 0);
     error_val(i) = J;
+#    printf("i = %d, cv_error = %d, theta[%d, %d]\n", i, J, theta(1), theta(2));
 endfor
 
 

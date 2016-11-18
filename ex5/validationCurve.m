@@ -38,10 +38,15 @@ error_val = zeros(length(lambda_vec), 1);
 %       end
 %
 %
-
-
-
-
+m = size(lambda_vec);
+for i = 1:m
+    lambda = lambda_vec(i);
+    [theta] = trainLinearReg(X, y, lambda);
+    [J, grad] = linearRegCostFunction(X, y, theta, 0);
+#   printf("i = %d, train_err = %d, grad[%d, %d]\n", i, J, grad(1), grad(2));
+    error_train(i) = J;
+    [J, grad] = linearRegCostFunction(Xval, yval, theta, 0);
+    error_val(i) = J;
 
 
 
