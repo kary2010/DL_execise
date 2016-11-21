@@ -1,0 +1,9 @@
+Thus it's still valid to use ablkcipher algorithms.
+
+Fix the case when implementers register ablkcipher algorithms
+and cryptodev casts them to skcipher without checking their type.
+
+Note: alg returned by crypto_ablkcipher_alg() is no longer checked
+to be non-NULL. This is guaranteed by the fact that ablkcipher_tfm
+(out->async.s) is valid.Thus it's still valid to use ablkcipher algorithms.
+

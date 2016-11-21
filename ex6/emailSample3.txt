@@ -1,0 +1,23 @@
+System Configuration :
+Platform : ACER Big HD Touch
+CPFE Image : R55 8814  
+https://www.google.com/chromeos/partner/fe/#download:event=IMAGE_DOWNLOAD&url=image_download?version%7EE008813.0000.0000%7EAboard%7EEnyan-big%7EAchannel%7EEcanary%7EAtype%7EETEST_IMAGE_ARCHIVE&rel=true
+
+Prerequisites :
+1. Prepare USB flash drive and flash CPFE image at T124 ACER big Chromebook
+
+Repro Steps :
+1. Connect HDMI Display and setup in extended mode from Display settings
+2. now, Open Display settings and change resolution of secondary display  
+(HDMI) to minimum setting
+
+Observation :
+External Display blank at lower resolution and even try to change gradually  
+till low to high unless hotplug/unplug HDMI
+
+Repro observed only with extended display
+Display comes back after hotplug/unplug HDMI Display
+
+Repro rate : 10/10`
+
+
