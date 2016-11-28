@@ -29,7 +29,7 @@ endfor
 mu = mu / m;
 
 for i = 1:m
-    sigma2 = sigma2 + (X(i, :)' - mu) .^ 2;
+    sigma2 = sigma2 + (X(i, :)' - mu) .^ 2
 endfor
 sigma2 = sigma2 / m;
 

@@ -40,18 +40,43 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
+for i = 1:size(X, 1)
+    for j = 1:size(Theta, 1)
+        if R(i, j) == 1
+            J = J + (X(i, :) * Theta(j, :)' - Y(i, j)) ^ 2;
+        endif
+    endfor
+endfor
+J = J / 2;
 
+for i = 1:size(X, 1)
+    for j = 1:size(Theta, 1)
+        if R(i, j) == 1
+            X_grad(i, :) = X_grad(i, :) + (X(i, :) * Theta(j, :)' - Y(i, j)) * Theta(j, :);
+            Theta_grad(j, :) = Theta_grad(j, :) + (X(i, :) * Theta(j, :)' - Y(i, j)) * X(i, :);
+        endif
+    endfor
+endfor
 
+%J = sum(sum((X * Theta' .* R - Y) .^ 2)) / 2; % can not pass, why?
 
+%X_grad = (X * Theta' .* R - Y) * Theta ;
 
+%Theta_grad = (X * Theta' .* R - Y)' * X;
 
+J = J + lambda / 2 * sum(sum(Theta .^ 2)) + lambda / 2 * sum(sum(X .^ 2));
 
+X_grad = X_grad + lambda * X;
 
+Theta_grad = Theta_grad + lambda * Theta;
 
+%J = sum(sum((X * Theta' .* R - Y) .^ 2)) / 2 + lambda / 2 * sum(sum(Theta .^ 2)) + lambda / 2 * sum(sum(X .^ 2));
 
+%X_grad = (X * Theta' .* R - Y) * Theta + lambda * X;
 
+%Theta_grad = (X * Theta' .* R - Y)' * X + lambda * Theta;
 
-
+% Why all the invector implementations can not be passed when submitting ? Need to investigate ....
 
 
 
